@@ -38,7 +38,6 @@ class Home extends Component {
                         
                         <div className='site-layout-content' style={{float:'left'}}>
                         <Modal1 /><br/>
-                            
                         </div>
                 </Content>
                 <Footer style={{
