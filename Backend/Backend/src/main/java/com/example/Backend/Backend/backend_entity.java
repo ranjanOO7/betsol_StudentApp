@@ -1,5 +1,6 @@
 package com.example.Backend.Backend;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,10 +11,15 @@ public class backend_entity {
 
     @Id
     private String usn;
+    @Column
     private String fname;
+    @Column
     private String lname;
+    @Column
     private String branch;
+    @Column(nullable = false)
     private String email;
+    @Column
     private String grade;
     public  backend_entity(){}
     public backend_entity(String usn, String fname, String lname, String email, String grade, String branch) {
