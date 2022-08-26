@@ -1,40 +1,17 @@
-import React from 'react'
+import { Card } from 'antd';
+import { axios } from 'axios';
+import React, { Fragment } from 'react';
 
-function deleteStudent(id, e){  
-    // axios.delete(`https://localhost:3000/${usn}`)  
-    //   .then(res => {  
-    //     console.log(res);  
-    //     console.log(res.data);  
-    //     const students = this.state.students.filter(item => item.usn !== usn);  
-    //     this.setState({ students });  
-    //   })  
-    
-}
 
-function StudentDetails(props){
-    return(
-        <div className="post bg-white p-1 my-1">
-            <h4>{propes.name}</h4>
-            <p className='styleDetails'>USN = {props.usn}</p>
-            <p className='styleDetails'>EMail = {props.email}</p>
-            <p className='styleDetails'>Branch = {props.branch}</p>
-            <p className='styleDetails'>CGPA = {props.cgpa}</p>
-            <div>
-                <p className="my-1">Delete Student</p>
-                <Fragment>
-                {!props.auth.loading && props.usn === props.auth.student.usn && (
-                    <button
-                    onClick={() => deleteStudent(props.usn)}
-                    type="button"
-                    className="btn btn-danger"
-                    >
-                    <i className="fas fa-times" />
-                    </button>
-                )}
-                </Fragment>
-            </div>
-        </div>
-    )
+
+function deleteStudent(usn, e){  
+    axios.delete(`https://localhost:3000/${usn}`)  
+      .then(res => {  
+        console.log(res);  
+        console.log(res.data);  
+        const students = this.state.students.filter(item => item.usn !== usn);  
+        this.setState({ students });  
+    })
 }
 
 
@@ -42,18 +19,29 @@ function StudentDetails(props){
 export default class Student extends React.Component {
     render(){
         return (
-            <div style={{ width: this.props.width + "px" }}>
-        <div className="styleStudent">
-          <StudentDetails
-            name={this.props.name}
-            usn = {this.props.usn}
-            email = {this.props.email}
-            branch = {this.props.branch}
-            cgpa = {this.props.cgpa}
-          />
-        </div>
-      </div>
+            <div className="site-card-wrapper" >
+              <Card style={{width: 300}}>
+                  <p>Student Name = {this.props.name}</p>
+                  <p>USN = {this.props.usn}</p>
+                  <p>Mail = {this.props.email}</p>
+                  <p>Branch = {this.props.branch}</p>
+                  <p>CGPA = {this.props.cgpa}</p>
+                    <p className="my-1">Delete Student</p>
+                  <Fragment>
+                  {!this.props.auth.loading && this.props.usn === this.props.auth.student.usn && (
+                      <button
+                      onClick={() => deleteStudent(this.props.usn)}
+                      type="button"
+                      className="btn btn-danger"
+                      >
+                      <i className="fas fa-times" />
+                      </button>
+                  )}
+                  </Fragment>
+              </Card>
+            </div>
         );
     }
 }
+
 

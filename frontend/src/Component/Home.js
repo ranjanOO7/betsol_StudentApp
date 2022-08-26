@@ -2,6 +2,9 @@ import { Breadcrumb, Layout, Menu } from 'antd'
 import { Content, Header, Footer } from 'antd/lib/layout/layout'
 import React, { Component } from 'react'
 import Modal1 from './AddStudentModal'
+import Student from './Student'
+
+
 
 class Home extends Component {
   render() {
@@ -40,6 +43,9 @@ class Home extends Component {
                         <Modal1 /><br/>
                         </div>
                 </Content>
+                {
+                    
+                }
                 <Footer style={{
                     textAlign: 'center',
                 }}>
