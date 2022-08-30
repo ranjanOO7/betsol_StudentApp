@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import {} from "antd";
 
 function deleteStudent(id, e) {
     // axios.delete(`https://localhost:3000/${usn}`)
@@ -13,14 +14,14 @@ function deleteStudent(id, e) {
 function StudentDetails(props) {
     return (
         <div className="post bg-white p-1 my-1">
-            <h4>{propes.name}</h4>
+            <h4>{props.name}</h4>
             <p className="styleDetails">USN = {props.usn}</p>
             <p className="styleDetails">EMail = {props.email}</p>
             <p className="styleDetails">Branch = {props.branch}</p>
             <p className="styleDetails">CGPA = {props.cgpa}</p>
             <div>
                 <p className="my-1">Delete Student</p>
-                <Fragment>
+                <>
                     {!props.auth.loading &&
                         props.usn === props.auth.student.usn && (
                             <button
@@ -31,7 +32,7 @@ function StudentDetails(props) {
                                 <i className="fas fa-times" />
                             </button>
                         )}
-                </Fragment>
+                </>
             </div>
         </div>
     );
